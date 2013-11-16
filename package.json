@@ -1,0 +1,29 @@
+{
+    "name": "mediacenterjs-vimeo",
+    "version": "0.0.1",
+    "description": "Vimeo plugin for Mediacenterjs",
+    "keywords": [
+        "video",
+        " stream",
+        "mediacenterjs"
+    ],
+    "homepage": "https://github.com/TerryMooreII/mediacenterjs-vimeo",
+    "bugs": {
+        "url": "https://github.com/TerryMooreII/mediacenterjs-vimeo/issues"
+    },
+    "author": {
+        "name": "Terry Moore"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/TerryMooreII/mediacenterjs-vimeo.git"
+    },
+    "peerDependencies": {
+        "mediacenterjs": "*"
+    },
+    "licenses": [
+        {
+            "type": "MIT"
+        }
+    ]
+}
