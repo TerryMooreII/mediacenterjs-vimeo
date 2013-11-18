@@ -1,3 +1,11 @@
+
+@font-face
+{
+	font-family: 'blackrose';
+	src: url('blackrose.TTF') format('truetype');
+}
+	
+
 body{ background:url(img/bg.png)repeat; }
 li{
 	list-style:none; 
@@ -10,10 +18,11 @@ li{
 	box-shadow: 0 1px 5px #a2a2a2;
 	color:#fff;
 }
-#header{height:100px; overflow:hidden; background:#fff;}
-#header h1{margin: 14px 0 0 60px;}
+#header{ height:75px; overflow:hidden; background:#fff;}
+#header h1{ font-family:'blackrose'; font-size: 48px; margin: -10px 0 0 00px;text-transform: lowercase; font-weight: normal;}
 
-#wrapper h1{ color:#000; font-size:11px; margin:0; padding:0;}
+
+#wrapper h1{  color:#000; font-size:11px; margin:0; padding:0;}
 #wrapper p{ color:#444; font-size:14px; margin:0 0 20px 0; padding:0;}
 #wrapper a{ 
 	color:#fff; 
