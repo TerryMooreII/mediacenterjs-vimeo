@@ -29,4 +29,20 @@ exports.index = function(req, res, next){
 };
 
 
+exports.get = function(req, res, next){
+    var infoRequest = req.params.id
+        , optionalParam = req.params.optionalParam
+        , action = req.params.action;
+        
+        switch(infoRequest) {
+                case('seach'):
+                    vimeoFunctions.search(req,res);
+                break;
+                default:
+                        return;
+                break;                
+        }        
+
+}
+
 
