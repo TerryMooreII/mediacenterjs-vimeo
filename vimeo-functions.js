@@ -45,7 +45,7 @@ exports.getCategoryVideos = function(category, req, res){
 
 exports.getChannels = function(req, res){
 
-	if (res.query.sort)
+	if (req.query.sort)
 		params.sort = req.query.sort;
 
 
