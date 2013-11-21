@@ -9,6 +9,7 @@ html(lang="en")
 		
 		// App specific
 		link(rel='stylesheet', href='/mediacenterjs-vimeo/public/css/style.css')
+		link(href="/mediacenterjs-vimeo/public/css/bootstrap.min.css" rel="stylesheet")
 		
 		title vimeo
 		
@@ -20,14 +21,19 @@ html(lang="en")
 			});
 	body
 		#header
-			a.backlink(href="/") 
-				img(src="/core/icons/back.png")
+			div.pull-left
+				a.backlink(href="/") 
+					img(src="/core/icons/back.png")
 
-			h1 vimeo
+				h1 vimeo
 
-			div
-				input#search(type="text" data-bind="value: search")
-				input#go(type="button" value="Search")
+			div.pull-right
+				div.form-inline
+					div.form-group
+						input#search(style="width:200px" type="text" data-bind="value: search" placeholder="Search for videos")
+					div.form-group
+						button.btn.btn-default#go Search
+
 
 		#wrapper
 			=data
