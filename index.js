@@ -30,18 +30,47 @@ exports.index = function(req, res, next){
 
 
 exports.get = function(req, res, next){
+
+    
     var infoRequest = req.params.id
         , optionalParam = req.params.optionalParam
         , action = req.params.action;
-        
-        switch(infoRequest) {
-                case('seach'):
-                    vimeoFunctions.search(req,res);
-                break;
-                default:
-                        return;
-                break;                
-        }        
+ 
+ // console.log(infoRequest)
+ // console.log(optionalParam)
+ // console.log(action)
+ 
+    switch(infoRequest) {
+        case('search'):
+            console.log('Vimeo.get Search...')
+            vimeoFunctions.search(optionalParam, req, res);
+        break;
+        case('categories'):
+            if (optionalParam){
+                console.log('Vimeo.get Category ' + optionalParam + '...');
+                vimeoFunctions.getCategoryVideos(optionalParam, req, res);
+            }else{
+                console.log('Vimeo.get Categories...');
+                vimeoFunctions.getCategories(req, res);
+            }
+        break;
+        case('channels'):
+            if (optionalParam){
+                console.log('Vimeo.get Channel ' + optionalParam + '...')
+                vimeoFunctions.getChannelVideos(optionalParam, req, res);
+            }else{
+                console.log('Vimeo.get Channels...')
+                vimeoFunctions.getChannels(req, res);     
+            }
+        break;
+        case('videos'):
+            console.log('Vimeo.get Video ' + optionalParam + '...')
+            vimeoFunctions.getVideo(optionalParam, req, res);
+        break;     
+        default:
+                return res.render('vimeo', {data: 'Invalid requst'});
+        break;                
+    }        
 
 }
 

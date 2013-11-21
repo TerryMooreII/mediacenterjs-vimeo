@@ -5,6 +5,7 @@ html(lang="en")
 		link(rel='stylesheet', href='/core/css/style.css')
 		script(src="/core/js/jquery-1.8.2.min.js")
 		script(src="/core/js/jquery.mcjs.core.js")
+		script(src="/core/js/plugins/knockout-2.3.0.js")
 		
 		// App specific
 		link(rel='stylesheet', href='/mediacenterjs-vimeo/public/css/style.css')
@@ -15,7 +16,7 @@ html(lang="en")
 			$(function(){
 				
 				$('body').mcjs();
-			
+				
 			});
 	body
 		#header
@@ -23,6 +24,10 @@ html(lang="en")
 				img(src="/core/icons/back.png")
 
 			h1 vimeo
+
+			div
+				input#search(type="text" data-bind="value: search")
+				input#go(type="button" value="Search")
 
 		#wrapper
 			=data
