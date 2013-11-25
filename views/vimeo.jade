@@ -1,12 +1,25 @@
 doctype 5
-html(lang="en")
+html(lang="en" ng-app="vimeoApp")
 	head
 		// Core inclusion
 		link(rel='stylesheet', href='/core/css/style.css')
 		script(src="/core/js/jquery-1.8.2.min.js")
 		script(src="/core/js/jquery.mcjs.core.js")
-		script(src="/core/js/plugins/knockout-2.3.0.js")
+		script(src="/mediacenterjs-vimeo/public/js/vendor/angular.min.js")
+		script(src="/mediacenterjs-vimeo/public/js/vendor/angular-route.min.js")
+		//Vimeo App stuff
+		script(src="/mediacenterjs-vimeo/public/js/app.js")
 		
+		//controllers
+		script(src="/mediacenterjs-vimeo/public/js/controllers/searchController.js")
+		
+		//services
+		//script(src="/mediacenterjs-vimeo/public/js/app.js")
+		
+		//Directives
+		//script(src="/mediacenterjs-vimeo/public/js/app.js")
+		
+
 		// App specific
 		link(rel='stylesheet', href='/mediacenterjs-vimeo/public/css/style.css')
 		link(href="/mediacenterjs-vimeo/public/css/bootstrap.min.css" rel="stylesheet")
@@ -27,15 +40,16 @@ html(lang="en")
 
 				h1 vimeo
 
-			div.pull-right
+			form.pull-right(name="searchForm" ng-controller="SearchCtrl")
 				div.form-inline
 					div.form-group
-						input#search(style="width:200px" type="text" data-bind="value: search" placeholder="Search for videos")
+						input#search(style="width:200px" type="text" placeholder="Search for videos" ng-model="search" required)
 					div.form-group
-						button.btn.btn-default#go Search
+						button.btn.btn-default(ng-click="getSearch()") Search
 
 
 		#wrapper
 			=data
+			{{search}}
 			
 
