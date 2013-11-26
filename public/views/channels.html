@@ -1,0 +1,17 @@
+<h2>Channels</h2>
+		<img src="/core/icons/back.png" >
+
+{{channel}}
+
+
+<div ng-repeat="video in videos">
+
+	<p>
+		<img ng-src="{{video.thumbnails.thumbnail[0]._content}}" width="{{video.thumbnails.thumbnail[0].width}}" height="{{video.thumbnails.thumbnail[0].height}}">
+		<img src="/core/icons/back.png" >
+		{{video.title}}
+		{{video.upload_date}}
+		{{video.description}}
+	</p>
+
+</div>

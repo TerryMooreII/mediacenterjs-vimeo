@@ -12,9 +12,14 @@ html(lang="en" ng-app="vimeoApp")
 		
 		//controllers
 		script(src="/mediacenterjs-vimeo/public/js/controllers/searchController.js")
-		
+		script(src="/mediacenterjs-vimeo/public/js/controllers/videoController.js")
+		script(src="/mediacenterjs-vimeo/public/js/controllers/categoriesController.js")
+		script(src="/mediacenterjs-vimeo/public/js/controllers/channelsController.js")
+
 		//services
-		//script(src="/mediacenterjs-vimeo/public/js/app.js")
+		script(src="/mediacenterjs-vimeo/public/js/services/videosService.js")
+		script(src="/mediacenterjs-vimeo/public/js/services/channelsService.js")
+		script(src="/mediacenterjs-vimeo/public/js/services/categoriesService.js")
 		
 		//Directives
 		//script(src="/mediacenterjs-vimeo/public/js/app.js")
@@ -49,7 +54,7 @@ html(lang="en" ng-app="vimeoApp")
 
 
 		#wrapper
-			=data
-			{{search}}
+			ng-view
+
 			
 
