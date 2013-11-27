@@ -1,39 +1,65 @@
 <h1>{{message}}</h1>
 
-<my-frame data-iframe-src="{{videoUrl}}">test</my-frame>
-<p>Video status: <span class="status">...</span></p>
-<p><button>Play</button> <button>Pause</button></p>
 
+<script type="text/javascript" src="/mediacenterjs-vimeo/public/js/vendor/video.js"></script>
+<script type="text/javascript" src="/mediacenterjs-vimeo/public/js/vendor/vjs.vimeo.js"></script>
 <script type="text/javascript">
-var iframe = $('#player1')[0],
-    player = $f(iframe),
-    status = $('.status');
+//  $('.link').click(function(e) {
+// //   e.preventDefault();   
+//     var src = "https://vimeo.com/" + {{videoId}};
+//   videojs("player", { "techOrder": ["vimeo"], "src": src  }).ready(function(){
+//     var myPlayer = this;
+//     $('#player').css('bottom','0');
+//     // myPlayer.src(link);
+//     // myPlayer.play();
+//   });
+// //   var link = $(this).attr('href')
 
-// When the player is ready, add listeners for pause, finish, and playProgress
-player.addEvent('ready', function() {
-    status.text('ready');
-    
-    player.addEvent('pause', onPause);
-    player.addEvent('finish', onFinish);
-    player.addEvent('playProgress', onPlayProgress);
-});
+// });
 
-// Call the API when a button is pressed
-$('button').bind('click', function() {
-    player.api($(this).text().toLowerCase());
-});
 
-function onPause(id) {
-    status.text('paused');
-}
 
-function onFinish(id) {
-    status.text('finished');
-}
+</script>
 
-function onPlayProgress(data, id) {
-    status.text(data.seconds + 's played');
-}
+
+<link rel="stylesheet" type="text/css" href="http://vjs.zencdn.net/4.0/video-js.css">
+<style type="text/css">
+#header {display: none}
+#wrapper {padding: 0px; margin: 0px}
+body{padding:0px; margin:0px;}
+    .vjs-play-progress, .vjs-volume-level { background-color: #d96800!important; }
+    .vjs-control-bar, .vjs-big-play-button { background: rgba(171,171,171,0.7)!important; }
+    .vjs-slider { background: rgba(171,171,171,0.2333333333333333)!important; }
+    .vjs-fade-out { opacity: 1 !important; visibility: visible !important; }
+    .vjs-fullscreen-control{visibility:hidden!important;}
+    .vjs-big-play-button {display: none}
+</style>
+
+  
+<video id="player" class="video-js vjs-default-skin" controls preload="auto" width="100%" height="100%" data-setup='{ "techOrder": ["vimeo"], "loop": false, "autoplay": true, "src":"https://vimeo.com/{{videoId}}" }'> 
+
+ <p>Video Playback Not Supported</p>
+</video>
+<script type="text/javascript">
+//https://vimeo.com/{{videoId}}
+ // videojs('player', { "techOrder": ["vimeo"], "src": "https://vimeo.com/63186969" }).ready(function() {
+ //    // You can use the video.js events even though we use the vimeo controls
+ //    // As you can see here, we change the background to red when the video is paused and set it back when unpaused
+ //    this.on('pause', function() {
+ //      document.body.style.backgroundColor = 'red';
+ //    });
+
+ //    this.on('play', function() {
+ //      document.body.style.backgroundColor = '';
+ //    });
+
+ //    // You can also change the video when you want
+ //    // Here we cue a second video once the first is done
+ //    this.one('ended', function() {
+ //      this.src('http://vimeo.com/79380715');
+ //      this.play();
+ //    });
+ //  });
 
 
 </script>

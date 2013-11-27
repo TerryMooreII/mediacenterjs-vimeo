@@ -13,7 +13,6 @@ vimeoApp.controller('PlayerCtrl', ['$scope', '$routeParams',
       $scope.errorMessage = 'No video id was provided';      
     }
 
-    $scope.videoUrl = "http://player.vimeo.com/video/" + $scope.videoId + "?api=1&player_id=player1"
 
 
 }]);
