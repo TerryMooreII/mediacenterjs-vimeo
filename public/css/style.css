@@ -6,7 +6,8 @@
 }
 	
 
-body{ background:url(img/bg.png)repeat; }
+body{}
+
 li{
 	list-style:none; 
 	margin:0 0 30px 0; 
@@ -18,12 +19,45 @@ li{
 	box-shadow: 0 1px 5px #a2a2a2;
 	color:#fff;
 }
-#header{ height:75px; overflow:hidden; background:#fff;}
+#header{ height:75px; overflow:hidden; background:#fff; z-index: 999}
+
 #header h1{ font-family:'blackrose'; font-size: 58px; margin: -5px 0 0 00px;text-transform: lowercase; font-weight: normal;}
 
+#wrapper { background-color: #ddd;}
 
-#wrapper h1{  color:#000; font-size:11px; margin:0; padding:0;}
-#wrapper p{ color:#444; font-size:14px; margin:0 0 20px 0; padding:0;}
+#wrapper h1{ color:#000; font-size:11px; margin:0; padding:0;}
+
+#wrapper p{ 
+ 	float:left;
+	border-radius: 5px;
+	width: 360px;
+	height: 300px;
+	padding:20px;
+	background-color:#fff;
+	color:#444; 
+	font-size:14px; 
+	margin:0 0 20px 20px; 
+	overflow: hidden;
+}
+
+#wrapper p:hover, #wrapper p:focus{
+	background-color:lightblue;
+	-moz-box-shadow: 0 1px 5px #a2a2a2;
+	-webkit-box-shadow: 0 1px 5px #a2a2a2;
+	box-shadow: 0 1px 5px #a2a2a2;
+	
+}
+
+
+
+#wrapper img {
+	margin: 10px auto;
+	width:320px;
+	height:180px;
+	border-radius: 5px;
+	margin-bottom:4px;
+}
+
 #wrapper a{ 
 	color:#fff; 
 	font-size:16px; 
@@ -38,10 +72,32 @@ li{
 	text-transform:uppercase;
 }
 
-#wrapper img{display:none;}
+#wrapper img{display:block;}
 
 #player{
 	position:fixed;
 	bottom:-35px;
 	left:0;
+}
+
+
+.title{
+	size:18px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.upload-date{
+	float:left;
+	margin-bottom: 10px;
+	clear:both;
+	width:100%;
+	font-size:12px;
+	color:#aaa;
+	font-style: italic;
+	text-align: right;
+}
+
+.description{
+	text-overflow:ellipsis;
+
 }

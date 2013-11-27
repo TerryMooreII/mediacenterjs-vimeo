@@ -17,4 +17,8 @@ vimeoApp.controller('ChannelsCtrl', ['$scope', '$rootScope', '$routeParams', 'ch
    		$scope.videos = data.videos.video;
    	});
 
+   $scope.play = function(id){
+   		console.log("Play video id: " + id)
+   }
+
 }]);
