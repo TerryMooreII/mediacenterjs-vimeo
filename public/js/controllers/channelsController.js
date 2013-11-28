@@ -1,24 +1,24 @@
-vimeoApp.controller('ChannelsCtrl', ['$scope', '$rootScope', '$routeParams', 'channelsService', 
-	function ($scope, $rootScope, $routeParams, channelsService) {
-    
+vimeoApp.controller('ChannelsCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'channelsService', 
+	function ($scope, $rootScope, $routeParams, $location, channelsService) {
 
-    console.log('ChannelsCtrl...')
-   	
-   	$scope.channel = $routeParams.channel;
+   console.log('ChannelsCtrl...')
 
-   	if (!$scope.channel){
-   		$scope.channel = 'vimeohq';
-   	}
+   $scope.channel = $routeParams.channel;
 
-   	$scope.videos = [];
+   if (!$scope.channel){
+   	$scope.channel = 'vimeohq';
+   }
 
-   	channelsService.getChannels($scope.channel).success(function(data, status){
-   		console.log(data)
-   		$scope.videos = data.videos.video;
-   	});
+   $scope.videos = [];
+
+   channelsService.getChannels($scope.channel).success(function(data, status){
+   	console.log(data)
+   	$scope.videos = data.videos;
+   });
 
    $scope.play = function(id){
-   		console.log("Play video id: " + id)
+		console.log("Playing video id: " + id);
+		$location.path('/player/' + id);
    }
 
 }]);

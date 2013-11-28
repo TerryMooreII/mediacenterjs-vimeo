@@ -3,7 +3,11 @@ var vimeoApp = angular.module('vimeoApp', ['ngRoute']);
 vimeoApp.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $routeProvider.when('/videos', {
       templateUrl: 'public/views/videos.html',
-      controller: 'VideoCtrl'
+      controller: 'VideosCtrl'
+    })
+    .when('/videos/:query', {
+      templateUrl: 'public/views/videos.html',
+      controller: 'VideosCtrl'
     })
     .when('/categories/:category', {
       templateUrl: 'public/views/categories.html',
@@ -25,12 +29,8 @@ vimeoApp.config(['$locationProvider', '$routeProvider', function ($locationProvi
       templateUrl: 'public/views/player.html',
       controller: 'PlayerCtrl'
     })
-    // .when('/video/:id', {
-    //   templateUrl: 'views/videoContainer.html',
-    //   controller: 'VideoCtrl'
-    // })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/channels'
     });
 }]);
 

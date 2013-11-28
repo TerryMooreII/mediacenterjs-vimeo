@@ -24,15 +24,17 @@
 
 <link rel="stylesheet" type="text/css" href="http://vjs.zencdn.net/4.0/video-js.css">
 <style type="text/css">
-#header {display: none}
-#wrapper {padding: 0px; margin: 0px}
-body{padding:0px; margin:0px;}
+	#header {display: none}
+	#wrapper {padding: 0px; margin: 0px}
+	body{padding:0px; margin:0px;}
     .vjs-play-progress, .vjs-volume-level { background-color: #d96800!important; }
     .vjs-control-bar, .vjs-big-play-button { background: rgba(171,171,171,0.7)!important; }
     .vjs-slider { background: rgba(171,171,171,0.2333333333333333)!important; }
     .vjs-fade-out { opacity: 1 !important; visibility: visible !important; }
     .vjs-fullscreen-control{visibility:hidden!important;}
-    .vjs-big-play-button {display: none}
+    .vjs-big-play-button {display: none !important}
+    #player{position:absolute; top:0px; right: 0px; left: 0px; bottom: 0px}
+    .vjs-control-bar{display: block !important}
 </style>
 
   
@@ -42,7 +44,10 @@ body{padding:0px; margin:0px;}
 </video>
 <script type="text/javascript">
 //https://vimeo.com/{{videoId}}
- // videojs('player', { "techOrder": ["vimeo"], "src": "https://vimeo.com/63186969" }).ready(function() {
+
+
+$(document).ready(function(){
+	// videojs('player1',{}).ready(function() {
  //    // You can use the video.js events even though we use the vimeo controls
  //    // As you can see here, we change the background to red when the video is paused and set it back when unpaused
  //    this.on('pause', function() {
@@ -60,6 +65,9 @@ body{padding:0px; margin:0px;}
  //      this.play();
  //    });
  //  });
+})
+ 
 
 
 </script>
+

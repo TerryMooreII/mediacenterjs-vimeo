@@ -8,22 +8,11 @@
 
 body{}
 
-li{
-	list-style:none; 
-	margin:0 0 30px 0; 
-	background:#fff; 
-	border-radius:5px; 
-	padding:30px 20px;
-	-moz-box-shadow: 0 1px 5px #a2a2a2;
-	-webkit-box-shadow: 0 1px 5px #a2a2a2;
-	box-shadow: 0 1px 5px #a2a2a2;
-	color:#fff;
-}
 #header{ height:75px; overflow:hidden; background:#fff; z-index: 999}
 
 #header h1{ font-family:'blackrose'; font-size: 58px; margin: -5px 0 0 00px;text-transform: lowercase; font-weight: normal;}
 
-#wrapper { background-color: #ddd;}
+#wrapper { background-color: #ddd; padding:0px;}
 
 #wrapper h1{ color:#000; font-size:11px; margin:0; padding:0;}
 
@@ -72,6 +61,11 @@ li{
 	text-transform:uppercase;
 }
 
+#wrapper a.disabled{
+	opacity: .2;
+	cursor:default;
+}
+
 #wrapper img{display:block;}
 
 #player{
@@ -102,10 +96,13 @@ li{
 
 }
 
-iframe{
-	position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	right: 0;
+.info{
+	width:100%;
+	font-style: italic;
+	font-size:22px;
+	margin:10px 20px;
+}
+
+.pager-wrapper{
+	margin:0px 50px;
 }

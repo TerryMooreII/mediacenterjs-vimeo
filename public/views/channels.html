@@ -1,6 +1,8 @@
 	
 
-<div ng-repeat="video in videos">
+<div class="info">{{videos.total}} videos in the {{channel}} channel</div>
+
+<div ng-repeat="video in videos.video">
 
 	<p ng-click="play(video.id)">
 		<span class="upload-date">{{video.upload_date}}</span>
@@ -11,5 +13,11 @@
 	</p>
 
 </div>
+<div class="clearfix"></div>
+<div >
+	<ul class="pager">
+	  <li class="previous"><a ng-click="page(page--)">&larr; Previous</a></li>
+	  <li class="next"><a ng-click="page(page++)">Next &rarr;</a></li>
+	</ul>
 
-</script>
+</div>
