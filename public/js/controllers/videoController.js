@@ -7,19 +7,17 @@ vimeoApp.controller('VideosCtrl', ['$scope', '$rootScope', '$routeParams', '$loc
 
    $scope.query = $routeParams.query;
    $scope.pageNumber = 1;
-
-   if (!$scope.query){
-    $scope.query = 'vimeohq';
-   }
-
    $scope.videos = {};
-   
+
+    if (!$scope.query){
+        $scope.query = 'vimeohq';
+    }
+
     var getVideos = function(){
         videosService.getVideos($scope.query, $scope.pageNumber).success(function(data, status){
             console.log(data)
             $scope.videos = data.videos;
         });
-
     }
 
    

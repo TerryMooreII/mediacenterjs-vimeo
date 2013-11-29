@@ -9,9 +9,9 @@ vimeoApp.config(['$locationProvider', '$routeProvider', function ($locationProvi
       templateUrl: 'public/views/videos.html',
       controller: 'VideosCtrl'
     })
-    .when('/categories/:category', {
-      templateUrl: 'public/views/categories.html',
-      controller: 'CategoriesCtrl'
+    .when('/categories/:subcategory', {
+      templateUrl: 'public/views/subcategories-videos.html',
+      controller: 'SubcategoriesCtrl'
     })
     .when('/categories', {
       templateUrl: 'public/views/categories.html',

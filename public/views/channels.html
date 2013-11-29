@@ -14,10 +14,11 @@
 
 </div>
 <div class="clearfix"></div>
-<div >
+
+<div id="pager-wrapper">
 	<ul class="pager">
-	  <li class="previous"><a ng-click="page(page--)">&larr; Previous</a></li>
-	  <li class="next"><a ng-click="page(page++)">Next &rarr;</a></li>
+	  <li class="previous" ><a ng-class="{disabled: pageNumber === 1}" ng-click="page(false)">&larr; Previous</a></li>
+	  <li class="next"><a ng-class="{disabled: pageNumber === maxPageNumber()}" ng-click="page(true)">Next &rarr;</a></li>
 	</ul>
 
 </div>

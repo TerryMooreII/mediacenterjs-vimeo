@@ -54,6 +54,10 @@ exports.get = function(req, res, next){
                 vimeoFunctions.getCategories(req, res);
             }
         break;
+        case('categoryInfo'):
+            console.log('Vimeo.get Category Info...')
+            vimeoFunctions.getCategoryInfo(optionalParam, req, res);
+        break;
         case('channels'):
             if (optionalParam){
                 console.log('Vimeo.get Channel ' + optionalParam + '...')

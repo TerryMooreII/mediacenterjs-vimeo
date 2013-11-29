@@ -1,0 +1,39 @@
+<h2 id="categories-breadcrumb"> Categories > {{categoryName}} > {{subcategoryName}} </h2>
+
+<!-- Sub categories -->
+
+<div>
+	<div class="pull-left" style="width:85%">
+		<div ng-repeat="video in videos.video">
+
+			<p ng-click="play(video.id)">
+				<span class="upload-date">{{video.upload_date}}</span>
+				<img ng-src="{{video.thumbnails.thumbnail[2]._content}}" >
+				
+				<span class="title">{{video.title}}</span>
+				
+			</p>
+
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div id="pager-wrapper">
+			<ul class="pager">
+			  <li class="previous" ><a ng-class="{disabled: pageNumber === 1}" ng-click="page(false)">&larr; Previous</a></li>
+			  <li class="next"><a ng-class="{disabled: pageNumber === maxPageNumber()}" ng-click="page(true)">Next &rarr;</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="pull-left"  id="subcategory-list" style="width:14%">
+		<h1>Subcategories</h1>
+		<ul ng-repeat="category in subcategoryList[0].subcategories.subcategory" >
+			<li ng-click="getVideos(category.id)">
+				<a  ng-click="getSubcategoryVideos(category)">{{category.name}}</a>
+			</li>
+		</ul>
+	</div>
+	
+</div>

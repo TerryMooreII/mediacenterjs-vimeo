@@ -44,6 +44,21 @@ exports.getCategories = function(req, res){
 	});
 }
 
+exports.getCategoryInfo = function(query, req, res){
+
+	if (req.query.page)
+		params.page = req.query.page;
+
+	if (!query || query === undefined)
+		return res.json(invalidRequest());
+
+	params.category = query;
+
+	vimeo.categories('getInfo', params, function(err, result){
+		res.json(result || noResults());
+	});
+}
+
 exports.getCategoryVideos = function(category, req, res){
 
 	if (req.query.page)
@@ -54,7 +69,7 @@ exports.getCategoryVideos = function(category, req, res){
 		return res.json(invalidRequest());
 
 	params.category = category;
-
+console.log(params)
 	vimeo.categories('getRelatedVideos', params, function(err, result){
 		res.json(result || noResults());
 	});
