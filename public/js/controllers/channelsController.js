@@ -33,6 +33,7 @@ vimeoApp.controller('ChannelsCtrl', ['$scope', '$rootScope', '$routeParams', '$l
          
          if ($scope.pageNumber !== 0 || $scope.pageNumber !== $scope.maxPageNumber() ){
             getVideos();
+            window.scrollTo(0);
          }
     }
 
