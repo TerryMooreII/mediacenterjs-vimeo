@@ -8,7 +8,7 @@ vimeoApp.controller('ChannelsCtrl', ['$scope', '$rootScope', '$routeParams', '$l
    $scope.pageNumber = 1;
   
    if (!$scope.channel){
-   	$scope.channel = 'vimeohq';
+   	//$scope.channel = 'vimeohq';
       $scope.pageNumber = 1;
    }
 

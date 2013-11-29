@@ -1,4 +1,9 @@
-<h2 id="categories-breadcrumb"> Categories > {{categoryName}} > {{subcategoryName}} </h2>
+<h2 id="categories-breadcrumb"> 
+	<a href="/mediacenterjs-vimeo/#/categories">Categories</a> > 
+	<a href="/mediacenterjs-vimeo/#/categories/{{categoryName.word}}">{{categoryName.name}}</a> 
+	<span ng-show="subcategoryName"> > </span>
+	<a href="/mediacenterjs-vimeo/#/categories/{{subcategoryName.word}}">{{subcategoryName.name}}</a>
+</h2>
 
 <!-- Sub categories -->
 
@@ -29,7 +34,7 @@
 
 	<div class="pull-left"  id="subcategory-list" style="width:14%">
 		<h1>Subcategories</h1>
-		<ul ng-repeat="category in subcategoryList[0].subcategories.subcategory" >
+		<ul ng-repeat="category in subcategoryList.subcategories.subcategory" >
 			<li ng-click="getVideos(category.id)">
 				<a  ng-click="getSubcategoryVideos(category)">{{category.name}}</a>
 			</li>

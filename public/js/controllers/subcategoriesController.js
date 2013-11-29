@@ -43,11 +43,11 @@ vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams'
             var cat = data.category[0];
             if (cat.is_sub == "1"){
                 getInfo(cat.parent.word);
-                $scope.subcategoryName = cat.name;
+                $scope.subcategoryName = cat;
                 return;
             }
-            $scope.categoryName = data.category[0].name;
-            $scope.subcategoryList = data.category;
+            $scope.categoryName = data.category[0];
+            $scope.subcategoryList = data.category[0];
 
 
         });
