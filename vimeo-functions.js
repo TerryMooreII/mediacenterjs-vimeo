@@ -69,7 +69,7 @@ exports.getCategoryVideos = function(category, req, res){
 		return res.json(invalidRequest());
 
 	params.category = category;
-console.log(params)
+
 	vimeo.categories('getRelatedVideos', params, function(err, result){
 		res.json(result || noResults());
 	});

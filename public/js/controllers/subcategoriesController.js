@@ -49,7 +49,6 @@ vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams'
             $scope.categoryName = data.category[0];
             $scope.subcategoryList = data.category[0];
 
-
         });
     }
    
