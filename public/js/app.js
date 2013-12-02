@@ -75,9 +75,9 @@ vimeoApp.directive('vimeoPager', ['$rootScope',
       restrict: 'E',
       template: ['<ul class="pager">',
                  '<li class="previous" ><a ng-class="{disabled: pageNumber === 1}" ng-click="page(false)">&larr; Previous</a></li>',
+                 '<li class="page-number">Page {{videos.page}}</li>',
                  '<li class="next"><a ng-class="{disabled: pageNumber === maxPageNumber()}" ng-click="page(true)">Next &rarr;</a></li>',
                  '</ul>'].join('')
   };
 }]);
-
 
