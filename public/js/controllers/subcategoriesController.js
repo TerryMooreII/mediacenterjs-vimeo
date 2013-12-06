@@ -1,10 +1,9 @@
-vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'categoriesService', 
-    function ($scope, $rootScope, $routeParams, $location, categoriesService) {
+vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'categoriesService', 'pagerService',
+    function ($scope, $rootScope, $routeParams, $location, categoriesService, pagerService) {
 
     console.log('SubcategoriesCtrl...');
 
-    var VIDEOS_PER_PAGE = 25;    
-
+   
     $scope.subcategory = $routeParams.subcategory;
     $scope.pageNumber = 1;
     $scope.videos = {};
@@ -12,6 +11,7 @@ vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams'
 
     $scope.subcategoryName = '';
     $scope.categoryName = '';
+    $pageNumber = 1;
 
     
     if (!$scope.subcategory){
@@ -22,8 +22,12 @@ vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams'
         categoriesService.getRelatedVideos($scope.subcategory, $scope.pageNumber).success(function(data, status){
             console.log('Category Vidoes:');
             console.log(data);
-            if (!data.error)
-                $scope.videos = data.videos;
+            if (data.error)
+                return;
+
+            $scope.videos = data.videos;
+            pagerService.setMaxPageNumber(data.videos.total);
+            window.scrollTo(0);
         });
     }
 
@@ -52,21 +56,17 @@ vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams'
         });
     }
    
+    $scope.maxPageNumber = function(){
+        return pagerService.getMaxPageNumber();
+    }
+   
     $scope.play = function(id){
-        console.log("Playing video id: " + id);
-        $location.path('/player/' + id);
+        pagerService.playVideo(id);
     }
 
     $scope.page = function(isNext){
-        
-        if ($scope.pageNumber !== 1 || $scope.pageNumber !== $scope.maxPageNumber() ){
-            $scope.pageNumber = isNext ? $scope.pageNumber + 1 : $scope.pageNumber - 1;
-            getVideos();
-        }
-    }
-
-    $scope.maxPageNumber = function(){
-        return  Math.ceil($scope.videos.total / VIDEOS_PER_PAGE)
+        $scope.pageNumber = pagerService.pagination($scope.pageNumber, isNext);
+        getVideos();
     }
 
     $scope.getData = function(){
@@ -75,8 +75,8 @@ vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams'
     }
     
     $scope.getSubcategoryVideos = function(category){
-      $location.path('/categories/' + category.word)
-   }
+        $location.path('/categories/' + category.word)
+    }
 
     $scope.getData();
 

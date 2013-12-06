@@ -22,7 +22,7 @@ vimeoApp.config(['$locationProvider', '$routeProvider', function ($locationProvi
       controller: 'ChannelsCtrl'
     })
     .when('/channels/:channel', {
-      templateUrl: 'public/views/channels.html',
+      templateUrl: 'public/views/channels-videos.html',
       controller: 'ChannelsCtrl'
     })
     .when('/player/:videoId', {
@@ -55,6 +55,20 @@ vimeoApp.directive('myFrame', ['$rootScope',
   }])
 
 
+vimeoApp.directive('vimeoChannels', ['$rootScope', 
+   function () {
+    return {
+      restrict: 'E',
+      template: ['<div ng-repeat="channel in channels.channel">',
+                 '<p ng-click="gotoChannel(channel.id)">',
+                 '<span class="upload-date">{{channel.created_on}}</span>',
+                 '<img ng-src="{{channel.thumbnail_url}}" >',
+                 '<span class="title">{{channel.name}}</span>',
+                 '</p>',
+                 '</div>'].join('')
+  };
+}]);
+
 vimeoApp.directive('vimeoVideo', ['$rootScope', 
    function () {
     return {
@@ -75,7 +89,7 @@ vimeoApp.directive('vimeoPager', ['$rootScope',
       restrict: 'E',
       template: ['<ul class="pager">',
                  '<li class="previous" ><a ng-class="{disabled: pageNumber === 1}" ng-click="page(false)">&larr; Previous</a></li>',
-                 '<li class="page-number">Page {{videos.page}}</li>',
+                 '<li class="page-number">Page {{pageNumber}}</li>',
                  '<li class="next"><a ng-class="{disabled: pageNumber === maxPageNumber()}" ng-click="page(true)">Next &rarr;</a></li>',
                  '</ul>'].join('')
   };

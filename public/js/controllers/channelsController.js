@@ -1,46 +1,74 @@
-vimeoApp.controller('ChannelsCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'channelsService', 
-	function ($scope, $rootScope, $routeParams, $location, channelsService) {
+vimeoApp.controller('ChannelsCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'channelsService', 'pagerService',
+	function ($scope, $rootScope, $routeParams, $location, channelsService, pagerService) {
 
-   console.log('ChannelsCtrl...')
-   var VIDEOS_PER_PAGE = 25;
-
-   $scope.channel = $routeParams.channel;
-   $scope.pageNumber = 1;
-  
-   if (!$scope.channel){
-   	//$scope.channel = 'vimeohq';
-      $scope.pageNumber = 1;
-   }
-
-   $scope.videos = [];
-
-   var getVideos = function(){
-      channelsService.getChannels($scope.channel, $scope.pageNumber).success(function(data, status){
-         console.log(data)
-         $scope.videos = data.videos;
-      });
+    console.log('ChannelsCtrl...')
    
-   }
-   
-   $scope.play = function(id){
-		console.log("Playing video id: " + id);
-		$location.path('/player/' + id);
-   }
+    $scope.channel = $routeParams.channel;
+    $scope.pageNumber = 1;
 
-   $scope.page = function(isNext){
-        
-         $scope.pageNumber = isNext ? $scope.pageNumber + 1 : $scope.pageNumber - 1;
-         
-         if ($scope.pageNumber !== 0 || $scope.pageNumber !== $scope.maxPageNumber() ){
-            getVideos();
+
+    $scope.videos = [];
+
+    var getVideos = function(){
+        channelsService.getChannelVideos($scope.channel, $scope.pageNumber, $scope.sortOrder).success(function(data, status){
+            console.log(data);
+            $scope.videos = data.videos;
+            pagerService.setMaxPageNumber(data.videos.total);
             window.scrollTo(0);
-         }
+        });
+    }
+    
+    var getChannels = function(){
+        channelsService.getChannels($scope.pageNumber, $scope.sortOrder).success(function(data, status){
+            console.log(data);
+            console.log('page number: ' + $scope.pageNumber)
+            $scope.channels = data.channels;
+            pagerService.setMaxPageNumber(data.channels.total);
+            window.scrollTo(0);
+        });
     }
 
     $scope.maxPageNumber = function(){
-        return  Math.ceil($scope.videos.total / VIDEOS_PER_PAGE)
+        return pagerService.getMaxPageNumber();
+    }
+    
+    $scope.gotoChannel = function(id){
+        $location.path('/channels/' + id);
     }
 
-    getVideos();
+    $scope.play = function(id){
+        pagerService.playVideo(id);
+    }
+
+    $scope.maxPageNumber = function(){
+        return pagerService.getMaxPageNumber();
+    }
+    
+    $scope.page = function(isNext){
+        $scope.pageNumber = pagerService.pagination($scope.pageNumber, isNext);
+        
+        isChannels? getChannels() : getVideos();
+    }
+
+
+    $scope.sortBy = function(sort){
+        $scope.pageNumber = 1;
+        $scope.sortOrder = sort;
+        isChannels? getChannels() : getVideos();
+    }
+
+    var init = function(){
+
+        if($scope.channel)
+           getVideos();
+        else
+            getChannels(); 
+    }
+
+    var isChannels = function(){
+        return $scope.channels ? true : false;
+    }
+
+    init();
 
 }]);

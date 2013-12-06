@@ -1,43 +1,39 @@
-vimeoApp.controller('VideosCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'videosService', 
-    function ($scope, $rootScope, $routeParams, $location, videosService) {
+vimeoApp.controller('VideosCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'videosService',  'pagerService',
+    function ($scope, $rootScope, $routeParams, $location, videosService, pagerService) {
 
    console.log('VideosCtrl...')
 
-   var VIDEOS_PER_PAGE = 25;
+    //var VIDEOS_PER_PAGE = 25;
 
-   $scope.query = $routeParams.query;
-   $scope.pageNumber = 1;
-   $scope.sortOrder = 'default';
-   $scope.videos = {};
+    $scope.query = $routeParams.query;
+    $scope.sortOrder = 'default';
+    $scope.videos = {};
 
+    $scope.pageNumber = 1;
+    
     if (!$scope.query){
         $scope.query = 'vimeohq';
     }
 
     var getVideos = function(){
         videosService.getVideos($scope.query, $scope.pageNumber, $scope.sortOrder).success(function(data, status){
-            console.log(data)
             $scope.videos = data.videos;
+            pagerService.setMaxPageNumber(data.videos.total);
+            window.scrollTo(0);
         });
     }
 
+    $scope.maxPageNumber = function(){
+        return pagerService.getMaxPageNumber();
+    }
    
     $scope.play = function(id){
-        console.log("Playing video id: " + id);
-        $location.path('/player/' + id);
+        pagerService.playVideo(id);
     }
 
     $scope.page = function(isNext){
-        
-        if ($scope.pageNumber !== 1 || $scope.pageNumber !== $scope.maxPageNumber() ){
-            $scope.pageNumber = isNext ? $scope.pageNumber + 1 : $scope.pageNumber - 1;
-            getVideos();
-            window.scrollTo(0);
-        }
-    }
-
-    $scope.maxPageNumber = function(){
-        return  Math.ceil($scope.videos.total / VIDEOS_PER_PAGE)
+        $scope.pageNumber = pagerService.pagination($scope.pageNumber, isNext);
+        getVideos();
     }
 
     $scope.sortBy = function(sort){

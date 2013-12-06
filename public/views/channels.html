@@ -1,24 +1,32 @@
-	
-
-<div class="info">{{videos.total}} videos in the {{channel}} channel</div>
-
-<div ng-repeat="video in videos.video">
-
-	<p ng-click="play(video.id)">
-		<span class="upload-date">{{video.upload_date}}</span>
-		<img ng-src="{{video.thumbnails.thumbnail[2]._content}}" >
 		
-		<span class="title">{{video.title}}</span>
-		
-	</p>
 
+
+<div style="width:100%; height:60px">
+
+	<div class="info pull-left">Page {{pageNumber}} of {{maxPageNumber()}} :: {{channels.total}} channels</div>
+
+	<div id="sort-by" class="pull-right">
+		<ul>
+			
+			<!-- Videos/Search -->
+			<li><a ng-click="sortBy('most_liked')">Most Liked</a></li>
+			<li><a ng-click="sortBy('most_played')">Most Played</a></li>
+			<li><a ng-click="sortBy('alphabetical')">Alphabetical</a></li>
+			
+			<!-- Channels -->
+			<!-- Common -->
+			<li><a ng-click="sortBy('oldest')">Oldest</a></li>
+			<li><a ng-click="sortBy('newest')">Newest</a></li>
+			<li><a ng-click="sortBy('default')">Relavent</a></li>
+			
+		</ul>
+	</div>
 </div>
+
+<vimeo-channels></vimeo-channels>
+
 <div class="clearfix"></div>
 
 <div id="pager-wrapper">
-	<ul class="pager">
-	  <li class="previous" ><a ng-class="{disabled: pageNumber === 1}" ng-click="page(false)">&larr; Previous</a></li>
-	  <li class="next"><a ng-class="{disabled: pageNumber === maxPageNumber()}" ng-click="page(true)">Next &rarr;</a></li>
-	</ul>
-
+	<vimeo-pager></vimeo-pager>
 </div>
