@@ -23,7 +23,7 @@
 		<h1>Subcategories</h1>
 		<ul ng-repeat="category in subcategoryList.subcategories.subcategory" >
 			<li ng-click="getVideos(category.id)">
-				<a  ng-click="getSubcategoryVideos(category)">{{category.name}}</a>
+				<a  class="mcjs-rc-controllable mcjs-rc-clickable" ng-click="getSubcategoryVideos(category)">{{category.name}}</a>
 			</li>
 		</ul>
 	</div>
