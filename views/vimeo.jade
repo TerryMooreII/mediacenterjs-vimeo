@@ -53,9 +53,9 @@ html(lang="en" ng-app="vimeoApp")
 			form.pull-right(name="searchForm" ng-controller="SearchCtrl")
 				div.form-inline
 					div.form-group
-						input#search(style="width:200px" type="text" placeholder="Search for videos" ng-model="search" required)
+						input#search.mcjs-rc-controllable(style="width:200px" type="text" placeholder="Search for videos" ng-model="search" required class-)
 					div.form-group
-						button.btn.btn-default(ng-click="getSearch()") Search
+						button.btn.btn-default.mcjs-rc-controllable.mcjs-rc-clickable(ng-click="getSearch()") Search
 
 
 		#wrapper
