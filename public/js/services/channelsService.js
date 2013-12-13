@@ -19,5 +19,5 @@ vimeoApp.service('channelsService', ['$http', function ($http) {
             return $http.get('/mediacenterjs-vimeo/channels/' + channel + '?' + params.join('&'));
         }
 
-    }
+    };
 }]);

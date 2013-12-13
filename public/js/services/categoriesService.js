@@ -17,5 +17,5 @@ vimeoApp.service('categoriesService', ['$http', function ($http) {
 
         	return $http.get('/mediacenterjs-vimeo/categories/' + category + '?' + params);
         }
-    }
+    };
 }]);

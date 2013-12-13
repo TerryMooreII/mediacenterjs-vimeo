@@ -9,5 +9,5 @@ vimeoApp.service('videosService', ['$http', function ($http) {
 
 	        return $http.get('/mediacenterjs-vimeo/search/' + query + '?' + params.join('&'));
         }
-	}
+	};
 }]);

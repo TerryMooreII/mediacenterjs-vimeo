@@ -11,7 +11,7 @@ vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams'
 
     $scope.subcategoryName = '';
     $scope.categoryName = '';
-    $pageNumber = 1;
+    $scope.pageNumber = 1;
 
     
     if (!$scope.subcategory){
@@ -29,12 +29,12 @@ vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams'
             pagerService.setMaxPageNumber(data.videos.total);
             window.scrollTo(0);
         });
-    }
+    };
 
     var getInfo = function(category){
 
         if (!category || category === undefined){
-            category = $scope.subcategory
+            category = $scope.subcategory;
         }
         
         categoriesService.getInfo(category).success(function(data, status){
@@ -54,29 +54,29 @@ vimeoApp.controller('SubcategoriesCtrl', ['$scope', '$rootScope', '$routeParams'
             $scope.subcategoryList = data.category[0];
 
         });
-    }
+    };
    
     $scope.maxPageNumber = function(){
         return pagerService.getMaxPageNumber();
-    }
+    };
    
     $scope.play = function(id){
         pagerService.playVideo(id);
-    }
+    };
 
     $scope.page = function(isNext){
         $scope.pageNumber = pagerService.pagination($scope.pageNumber, isNext);
         getVideos();
-    }
+    };
 
     $scope.getData = function(){
         getVideos();
         getInfo();    
-    }
+    };
     
     $scope.getSubcategoryVideos = function(category){
         $location.path('/categories/' + category.word)
-    }
+    };
 
     $scope.getData();
 

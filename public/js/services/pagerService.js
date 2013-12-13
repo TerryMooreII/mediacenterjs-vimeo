@@ -31,8 +31,5 @@ vimeoApp.service('pagerService', ['$http', '$location', function ($http, $locati
 			maxPageNumber = Math.ceil(totalVideos / videosPerPage);
 			return maxPageNumber;	
 		}
-
-
-
-	}
+	};
 }]);

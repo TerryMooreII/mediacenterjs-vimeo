@@ -1,5 +1,5 @@
 vimeoApp.controller('SearchCtrl', ['$scope', '$rootScope', '$location' ,'videosService', function ($scope, $rootScope, $location, videosService) {
-    console.log('SearchCtrl...')
+    console.log('SearchCtrl...');
    
     $scope.search;
 

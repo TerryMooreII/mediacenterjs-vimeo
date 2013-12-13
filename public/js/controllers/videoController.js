@@ -1,9 +1,7 @@
 vimeoApp.controller('VideosCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'videosService',  'pagerService',
     function ($scope, $rootScope, $routeParams, $location, videosService, pagerService) {
 
-   console.log('VideosCtrl...')
-
-    //var VIDEOS_PER_PAGE = 25;
+   console.log('VideosCtrl...');
 
     $scope.query = $routeParams.query;
     $scope.sortOrder = 'default';
@@ -21,26 +19,26 @@ vimeoApp.controller('VideosCtrl', ['$scope', '$rootScope', '$routeParams', '$loc
             pagerService.setMaxPageNumber(data.videos.total);
             window.scrollTo(0);
         });
-    }
+    };
 
     $scope.maxPageNumber = function(){
         return pagerService.getMaxPageNumber();
-    }
+    };
    
     $scope.play = function(id){
         pagerService.playVideo(id);
-    }
+    };
 
     $scope.page = function(isNext){
         $scope.pageNumber = pagerService.pagination($scope.pageNumber, isNext);
         getVideos();
-    }
+    };
 
     $scope.sortBy = function(sort){
         $scope.pageNumber = 1;
         $scope.sortOrder = sort;
         getVideos();
-    }
+    };
 
     getVideos();
 

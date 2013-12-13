@@ -1,8 +1,7 @@
 vimeoApp.controller('CategoriesCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'categoriesService', 
 	function ($scope, $rootScope, $routeParams, $location, categoriesService) {
-    
 
-   console.log('CategoriesCtrl...')
+   	console.log('CategoriesCtrl...')
 	
 	$scope.category = $routeParams.category;
 
@@ -14,12 +13,12 @@ vimeoApp.controller('CategoriesCtrl', ['$scope', '$rootScope', '$routeParams', '
 
 
 	categoriesService.getCategories($scope.category).success(function(data, status){
-		console.log(data)
+		console.log(data);
 		$scope.categories = data.categories;
 	});
 
-   $scope.getSubCategoryVideos = function(category){
-      $location.path('/categories/' + category.word)
-   }
+   	$scope.getSubCategoryVideos = function(category){
+     	$location.path('/categories/' + category.word);
+   	};
 
 }]);

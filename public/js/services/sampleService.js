@@ -3,5 +3,5 @@ youtubeApp.service('SearchYoutube', ['$http', function ($http) {
                 search: function(query) {
                         return $http.post('/youtube/searchYoutube', {'q': query});
                 }
-        }
+        };
 }]);

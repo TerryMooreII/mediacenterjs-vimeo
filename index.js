@@ -23,22 +23,13 @@ exports.engine = 'jade';
 
 // Render the indexpage
 exports.index = function(req, res, next){
-
 	res.render('vimeo', { data: "Hello MediacenterJS: My first plugin" });
-	
 };
 
-
 exports.get = function(req, res, next){
-
-    
     var infoRequest = req.params.id
-        , optionalParam = req.params.optionalParam
-        , action = req.params.action;
- 
- // console.log(infoRequest)
- // console.log(optionalParam)
- // console.log(action)
+    , optionalParam = req.params.optionalParam
+    , action = req.params.action;
  
     switch(infoRequest) {
         case('search'):

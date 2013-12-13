@@ -1,8 +1,7 @@
 vimeoApp.controller('PlayerCtrl', ['$scope', '$routeParams', 
 	function ($scope, $routeParams) {
     
-
-    console.log('PlayerCtrl...')
+    console.log('PlayerCtrl...');
       
     $scope.videoId = $routeParams.videoId;
 
@@ -11,8 +10,6 @@ vimeoApp.controller('PlayerCtrl', ['$scope', '$routeParams',
     if (!$scope.videoId){
       console.log('No video Id provided')
       $scope.errorMessage = 'No video id was provided';      
-    }
-
-
+    };
 
 }]);

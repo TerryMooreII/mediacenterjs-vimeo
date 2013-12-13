@@ -30,7 +30,7 @@ vimeoApp.config(['$locationProvider', '$routeProvider', function ($locationProvi
       controller: 'PlayerCtrl'
     })
     .otherwise({
-      redirectTo: '/channels'
+      redirectTo: '/categories'
     });
 }]);
 

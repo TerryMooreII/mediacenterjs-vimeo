@@ -1,24 +1,19 @@
 var vimeoKey = require('./vimeo-key').key;
 var vimeo = require('vimeo')(vimeoKey.key, vimeoKey.secret);
-
-// vimeo.area(method[, params[, access]], callback)
-
 var ITEMS_PER_PAGE = 50;
 
 //defaults
-var params = { 
+var params = {
 	page: 1, 
-	per_page: 25, 
+	per_page: 25,
 	full_response: true,
 	short_response: false 
 };
-
 
 exports.search = function(query, req, res){
 	
 	if (req.query.page)
 		params.page = req.query.page;
-
 
 	if (!query || query === undefined)
 		return res.json(invalidRequest());
@@ -31,18 +26,17 @@ exports.search = function(query, req, res){
 	vimeo.videos('search', params, function(err, result){
 		res.json(result || noResults());
 	});
-}
+};
 
 exports.getCategories = function(req, res){
 
 	if (req.query.page)
 		params.page = req.query.page;
 
-
 	vimeo.categories('getAll', params, function(err, result){
 		res.json(result || noResults());
 	});
-}
+};
 
 exports.getCategoryInfo = function(query, req, res){
 
@@ -57,7 +51,7 @@ exports.getCategoryInfo = function(query, req, res){
 	vimeo.categories('getInfo', params, function(err, result){
 		res.json(result || noResults());
 	});
-}
+};
 
 exports.getCategoryVideos = function(category, req, res){
 
@@ -73,7 +67,7 @@ exports.getCategoryVideos = function(category, req, res){
 	vimeo.categories('getRelatedVideos', params, function(err, result){
 		res.json(result || noResults());
 	});
-}
+};
 
 exports.getChannels = function(req, res){
 
@@ -87,7 +81,7 @@ exports.getChannels = function(req, res){
 	vimeo.channels('getAll', params, function(err, result){
 		res.json(result || noResults());
 	});
-}
+};
 
 exports.getChannelVideos = function(channelId, req, res){
 
@@ -102,7 +96,7 @@ exports.getChannelVideos = function(channelId, req, res){
 	vimeo.channels('getVideos', params, function(err, result){
 		res.json(result  || noResults());
 	});
-}
+};
 
 exports.getVideo = function(videoId, req, res){
 
@@ -112,19 +106,19 @@ exports.getVideo = function(videoId, req, res){
 	params.video_id = videoId;
 
 	vimeo.videos('getInfo', params, function(err, result){
-		console.log(err)
+		console.log(err);
 		res.json(result || noResults());
 	});
-}
+};
 
 
 var noResults = function(message){
 	return { error: message || 'No Results.' }
-}
+};
 
 var invalidRequest = function(message){
 	return { error: message || 'Invalid Request' }
-}
+};
 
 
 
